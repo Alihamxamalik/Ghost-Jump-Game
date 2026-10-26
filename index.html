@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Ghost Jump</title>
+    <meta name="description" content="A one-tap puzzle platformer. Every death leaves a ghost you can stand on.">
+    <meta name="theme-color" content="#1E2230">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='6' width='56' height='52' rx='14' fill='%23FFD166'/%3E%3Ccircle cx='27' cy='29' r='7' fill='white'/%3E%3Ccircle cx='45' cy='29' r='7' fill='white'/%3E%3Ccircle cx='29' cy='30' r='3.5' fill='%231B1E28'/%3E%3Ccircle cx='47' cy='30' r='3.5' fill='%231B1E28'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <main id="game">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+      <div id="loading">
+        <!-- The runner standing on one of its ghosts, as on the main menu. -->
+        <svg class="figure" viewBox="0 0 100 196" aria-hidden="true">
+          <rect x="2" y="104" width="96" height="92" rx="22" fill="#79A6C4"/>
+          <path d="M24 146l9 7 9-7M58 146l9 7 9-7" stroke="#557C96" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <g class="runner">
+            <rect x="2" y="4" width="96" height="92" rx="22" fill="#FFD166"/>
+            <circle cx="40" cy="43" r="11" fill="#fff"/>
+            <circle cx="70" cy="43" r="11" fill="#fff"/>
+            <circle cx="43" cy="45" r="5.5" fill="#1B1E28"/>
+            <circle cx="73" cy="45" r="5.5" fill="#1B1E28"/>
+          </g>
+        </svg>
+        <h1>GHOST JUMP</h1>
+        <div class="bar"><div id="progress"></div></div>
+        <p id="status">Loading…</p>
+      </div>
+
+      <div id="rotate">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="18" y="6" width="28" height="52" rx="6" fill="none" stroke="#FFD166" stroke-width="4"/>
+          <circle cx="32" cy="50" r="2.5" fill="#FFD166"/>
+        </svg>
+        <p>Turn your phone sideways to play.</p>
+      </div>
+
+      <button id="fullscreen-corner" class="fullscreen" type="button" aria-label="Fullscreen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+      </button>
+
+      <div id="banner"></div>
+    </main>
+
+    <footer id="footer">
+      <span><b>Ghost Jump</b> by <a href="https://alihamzanawaz.vercel.app" target="_blank" rel="noopener">Ali Hamza Nawaz</a></span>
+      <span class="controls"><kbd>Space</kbd> or click to jump <span class="dot">·</span> <kbd>Esc</kbd> to pause</span>
+      <a class="about" href="https://github.com/Alihamxamalik/Ghost-Jump-Game" target="_blank" rel="noopener">About</a>
+      <button class="fullscreen" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>
+        Fullscreen
+      </button>
+    </footer>
+
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+      var loading = document.querySelector("#loading");
+      var progress = document.querySelector("#progress");
+      var statusText = document.querySelector("#status");
+
+      // Inside another site's page the host has its own credits, so the game takes the whole frame.
+      if (window.self !== window.top) document.body.classList.add("embedded");
+
+      // Errors stay up; warnings go after a few seconds.
+      function unityShowBanner(message, type) {
+        var line = document.createElement("div");
+        line.textContent = message;
+        if (type == "error") line.className = "error";
+        document.querySelector("#banner").appendChild(line);
+        if (type != "error") setTimeout(function () { line.remove(); }, 5000);
+      }
+
+      // The whole page goes fullscreen, not just the canvas, so the overlays above keep working.
+      var page = document.documentElement;
+      var canGoFullscreen = !!(page.requestFullscreen || page.webkitRequestFullscreen);
+      if (!canGoFullscreen) document.body.classList.add("no-fullscreen");
+
+      function toggleFullscreen() {
+        if (document.fullscreenElement || document.webkitFullscreenElement) {
+          (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+          return;
+        }
+        var request = (page.requestFullscreen || page.webkitRequestFullscreen).call(page);
+        // Phones also hold landscape while fullscreen, where the browser allows it.
+        if (request && screen.orientation && screen.orientation.lock)
+          request.then(function () { return screen.orientation.lock("landscape"); }).catch(function () {});
+      }
+
+      document.querySelectorAll(".fullscreen").forEach(function (button) {
+        button.addEventListener("click", function () {
+          toggleFullscreen();
+          // Hand the keyboard back to the game, or Space would press this button again.
+          button.blur();
+          canvas.focus();
+        });
+      });
+
+      var buildUrl = "Build";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/WebGL.data.unityweb",
+        frameworkUrl: buildUrl + "/WebGL.framework.js.unityweb",
+        codeUrl: buildUrl + "/WebGL.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Ghost Jump",
+        productVersion: "1.0",
+        showBanner: unityShowBanner,
+        // Phone screens can be three times the page's resolution; twice is plenty for this art.
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+      };
+
+      var script = document.createElement("script");
+      script.src = buildUrl + "/WebGL.loader.js";
+      script.onload = function () {
+        // Downloading fills the bar to 90%; the rest is the engine starting up.
+        createUnityInstance(canvas, config, function (value) {
+          progress.style.width = 100 * value + "%";
+          if (value >= 0.9) statusText.textContent = "Starting…";
+        }).then(function () {
+          loading.classList.add("done");
+          canvas.focus();
+        }).catch(function (message) {
+          loading.classList.add("failed");
+          statusText.textContent = message;
+        });
+      };
+      script.onerror = function () {
+        loading.classList.add("failed");
+        statusText.textContent = "The game could not be downloaded. Check the connection and reload the page.";
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
