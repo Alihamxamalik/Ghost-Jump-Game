@@ -1,18 +1,16 @@
-# Ghost Jump
+# Ghostep: Ghost Jump Platformer
 
 **Die on purpose. Climb on your own ghosts.**
 
-Ghost Jump is a one-tap 2D puzzle platformer made in Unity 6. The character runs by itself and the
+Ghostep is a one-tap 2D puzzle platformer made in Unity 6. The character runs by itself and the
 only thing you control is when it jumps. Every death leaves the body frozen where it died, as a
 platform for the next attempt, so failing is how you solve a level.
 
 **[▶ Play in your browser](https://alihamxamalik.github.io/Ghost-Jump-Game/)**
 &nbsp;·&nbsp;
-**[Download for Android](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/GhostJump.apk)** (APK, 34 MB)
+**[Download for Android](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/Ghostep.apk)** (APK, 63 MB)
 
-![Level 1-6 solved in three attempts](docs/gameplay.gif)
-
-*Level 1-6, "Long Bed". Two deaths leave two ghosts, and the third run hops across them.*
+![Ghostep: every death leaves a ghost you can stand on](docs/feature-graphic.png)
 
 ## Contents
 
@@ -31,9 +29,8 @@ platform for the next attempt, so failing is how you solve a level.
 | Platform | How |
 |----------|-----|
 | **Browser** | [alihamxamalik.github.io/Ghost-Jump-Game](https://alihamxamalik.github.io/Ghost-Jump-Game/) in Chrome, Edge, Firefox or Safari on a computer, or on a phone held sideways. Progress is saved in the browser. |
-| **Android** | [GhostJump.apk](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/GhostJump.apk) from the [latest release](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest). Android 6.0 or newer, on a 64-bit phone. |
+| **Android** | [Ghostep.apk](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/Ghostep.apk) from the [latest release](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest). Android 6.0 or newer, on a 64-bit phone. |
 
-![The web version in a desktop browser: level 1-2, the runner standing on its own ghost in the middle of a spike bed](docs/screenshots/web.png)
 
 | Input                          | Action |
 |--------------------------------|--------|
@@ -41,9 +38,10 @@ platform for the next attempt, so failing is how you solve a level.
 | Esc, or Back on Android        | Pause  |
 
 **Installing the APK.** Open the downloaded file on the phone. The first time, Android asks you to
-allow installs from your browser or file manager. Allow it, then tap Install. The game isn't on
-Google Play, so Play Protect may say it doesn't recognise the developer and offer to scan the app
-first.
+allow installs from your browser or file manager. Allow it, then tap Install. Play Protect may say
+it doesn't recognise the developer and offer to scan the app first. Ghostep is also coming to
+Google Play. This APK is signed separately from the Play version, so uninstall one before
+installing the other.
 
 This repository holds the playable builds and the media on this page. The Unity project itself is
 kept in a separate, private repository.
@@ -52,13 +50,11 @@ kept in a separate, private repository.
 
 | | |
 |---|---|
-| ![Main menu](docs/screenshots/menu.png) | ![Long Bed: two ghosts on a spike strip](docs/screenshots/long-bed.png) |
-| ![Mind the Gap: a ghost frozen on a saw over a pit](docs/screenshots/mind-the-gap.png) | ![Stepping Stones: ghosts floating in acid](docs/screenshots/stepping-stones.png) |
-| ![Hold the Door: a ghost holding a button down](docs/screenshots/hold-the-door.png) | ![Thin Ice: a bridge of crumbling blocks](docs/screenshots/thin-ice.png) |
-| ![Level complete screen](docs/screenshots/level-complete.png) | ![Level select with five worlds](docs/screenshots/level-select.png) |
-| ![Assembly Line: a ghost plugging a laser, another jamming a press, a third riding a platform](docs/screenshots/assembly-line.png) | ![Ice Sculpture: a staircase of frozen ghosts](docs/screenshots/ice-sculpture.png) |
-| ![Catch Yourself: riding your own echo up its jump](docs/screenshots/catch-yourself.png) | ![Last Light: a spirit gate open with three ghosts](docs/screenshots/last-light.png) |
-| ![Running on an Android phone (Pixel 6 emulator), clear of the camera cutout](docs/screenshots/android-phone.png) | ![The same game on a 4:3 tablet](docs/screenshots/tablet.png) |
+| ![Main menu](docs/screenshots/menu.png) | ![Level select with five worlds](docs/screenshots/level-select.png) |
+| ![Mind the Gap (1-7): a ghost frozen on a saw over a pit](docs/screenshots/mind-the-gap.png) | ![No Footing (2-9): a ghost on crumbling blocks over acid](docs/screenshots/no-footing.png) |
+| ![Assembly Line (3-10): a ghost plugging a laser, another jamming a press](docs/screenshots/assembly-line.png) | ![Avalanche (4-10): falling icicles and a ghost frozen in place](docs/screenshots/avalanche.png) |
+| ![Afterimage (5-9): The Other Side, where echoes replay your last run](docs/screenshots/afterimage.png) | ![Last Light (5-10): a spirit gate and a climb of ghosts](docs/screenshots/last-light.png) |
+| ![Level complete screen](docs/screenshots/level-complete.png) | ![Settings, with the privacy policy link](docs/screenshots/settings.png) |
 
 ## How it plays
 
@@ -325,7 +321,7 @@ rebuilds the art, audio, prefabs, levels and scenes, and others build the APK an
 
 ## What's next
 
-- A Google Play release.
+- The Google Play release, now in closed testing as Ghostep.
 - A 30-second playable ad cut from the same project.
 - Final art and audio in place of the generated placeholders.
 
