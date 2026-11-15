@@ -8,7 +8,7 @@ platform for the next attempt, so failing is how you solve a level.
 
 **[▶ Play in your browser](https://alihamxamalik.github.io/Ghost-Jump-Game/)**
 &nbsp;·&nbsp;
-**[Download for Android](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/Ghostep.apk)** (APK, 63 MB)
+**[Download for Android](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/Ghostep.apk)** (APK, 48 MB)
 
 ![Ghostep: every death leaves a ghost you can stand on](docs/feature-graphic.png)
 
@@ -28,14 +28,16 @@ platform for the next attempt, so failing is how you solve a level.
 
 | Platform | How |
 |----------|-----|
-| **Browser** | [alihamxamalik.github.io/Ghost-Jump-Game](https://alihamxamalik.github.io/Ghost-Jump-Game/) in Chrome, Edge, Firefox or Safari on a computer, or on a phone held sideways. Progress is saved in the browser. |
-| **Android** | [Ghostep.apk](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/Ghostep.apk) from the [latest release](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest). Android 6.0 or newer, on a 64-bit phone. |
+| **Browser** | [alihamxamalik.github.io/Ghost-Jump-Game](https://alihamxamalik.github.io/Ghost-Jump-Game/) in Chrome, Edge, Firefox or Safari on a computer, or on a phone held sideways. Progress is saved in the browser. The browser version is still 1.0 (five worlds); the APK is 1.1. |
+| **Android** | [Ghostep.apk](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest/download/Ghostep.apk) from the [latest release](https://github.com/Alihamxamalik/Ghost-Jump-Game/releases/latest). Android 7.0 or newer, on a phone, tablet or Android TV. |
 
 
 | Input                          | Action |
 |--------------------------------|--------|
-| Tap, click or Space            | Jump   |
-| Esc, or Back on Android        | Pause  |
+| Tap, click, Space or Enter     | Jump (the first press starts the level) |
+| Gamepad A, TV remote OK        | Jump, or press the selected button |
+| D-pad, stick or arrow keys     | Move between buttons in menus |
+| Esc, gamepad B, Back           | Pause, or back out of a menu |
 
 **Installing the APK.** Open the downloaded file on the phone. The first time, Android asks you to
 allow installs from your browser or file manager. Allow it, then tap Install. Play Protect may say
@@ -58,7 +60,8 @@ kept in a separate, private repository.
 
 ## How it plays
 
-- **One input.** Tap, click or press Space to jump. There is nothing else to press.
+- **One input.** Tap, click, or press Space, a gamepad's A or a TV remote's OK to jump. There is
+  nothing else to press. Every level waits for a first tap before anything moves.
 - **The runner never stops.** It moves at a constant speed and turns around when it hits a wall.
 - **Hazards kill instantly.** The body freezes at the exact spot where it died and becomes a ghost:
   translucent, blue, eyes closed.
@@ -79,8 +82,8 @@ deaths it can be finished with.
 
 That is the tension the game is built on: you need ghosts to win, and every extra one costs a star.
 
-Levels unlock in order inside a world. World 2 opens at 15 stars, World 3 at 35, World 4 at 55 and
-World 5 at 75, so one-star clears are not enough to see everything.
+Levels unlock in order inside a world. World 2 opens at 15 stars, World 3 at 35, World 4 at 55,
+World 5 at 75 and World 6 at 95, so one-star clears are not enough to see everything.
 
 ## Level elements
 
@@ -101,6 +104,9 @@ Each element is there because it changes what a ghost is good for.
 | Spirit gate            | 5     | Open only while exactly N ghosts exist          | Every death changes the count, so it can open or shut      |
 | Haunting               | 5     | The runner comes back on its newest ghost       | Each death moves the start, even into mid-air              |
 | Echo                   | 5     | A ghost that replays your last run each attempt | Holds buttons, and you can ride it up its own jump         |
+| Gravity well           | 6     | Pulls whatever dies in it down to the floor     | The ghost falls and stacks, making towers                  |
+| Wormhole               | 6     | Two linked portals                              | A ghost made in one comes out of its twin                  |
+| Star block             | 6     | Solid only while a ghost is near                | Lights it up as a platform                                 |
 
 Hazards are red and orange and ghosts are cool blue, so danger and help read at a glance.
 
@@ -110,18 +116,18 @@ Each level is one screen with the whole puzzle visible from the start. The first
 shows a new element, the next ones require it, and later levels mix it with earlier ones. Par is in
 brackets.
 
-| #  | 1 Basement       | 2 Lab               | 3 Factory          | 4 Freezer          | 5 The Other Side       |
-|----|------------------|---------------------|--------------------|--------------------|------------------------|
-| 1  | First Steps (0)  | Stepping Stones (2) | Night Shift (0)    | Brain Freeze (1)   | Head Count (2)         |
-| 2  | Bed of Nails (1) | Thin Ice (0)        | Ferry (1)          | Detour (1)         | One Too Many (3)       |
-| 3  | Leg Up (1)       | Deep End (1)        | Firewall (1)       | Switchback (2)     | Haunted (1)            |
-| 4  | Too High (1)     | Hold the Door (1)   | Blink (0)          | Icicle Alley (0)   | Inchworm (3)           |
-| 5  | U-Turn (0)       | Lab Rat (2)         | Crossbeam (1)      | Umbrella (1)       | Point of No Return (2) |
-| 6  | Long Bed (2)     | Trapdoor (0)        | Wedge (1)          | Ice Sculpture (2)  | Déjà Vu (1)            |
-| 7  | Mind the Gap (1) | Double Lock (2)     | Jam (1)            | Pinball (2)        | Relay (2)              |
-| 8  | Two Flights (2)  | Last Ghost (3)      | Catch the Bus (2)  | Cold Storage (2)   | Catch Yourself (1)     |
-| 9  | Sawmill (0)      | No Footing (1)      | Two Birds (1)      | Black Ice (2)      | Afterimage (3)         |
-| 10 | Last Step (2)    | Musical Chairs (3)  | Assembly Line (3)  | Avalanche (3)      | Last Light (4)         |
+| #  | 1 Basement       | 2 Lab               | 3 Factory          | 4 Freezer          | 5 The Other Side       | 6 Observatory     |
+|----|------------------|---------------------|--------------------|--------------------|------------------------|-------------------|
+| 1  | First Steps (0)  | Stepping Stones (2) | Night Shift (0)    | Brain Freeze (1)   | Head Count (2)         | Falling Star (1)  |
+| 2  | Bed of Nails (1) | Thin Ice (0)        | Ferry (1)          | Detour (1)         | One Too Many (3)       | Long Drop (1)     |
+| 3  | Leg Up (1)       | Deep End (1)        | Firewall (1)       | Switchback (2)     | Haunted (1)            | Wormhole (1)      |
+| 4  | Too High (1)     | Hold the Door (1)   | Blink (0)          | Icicle Alley (0)   | Inchworm (3)           | Special Delivery (1)|
+| 5  | U-Turn (0)       | Lab Rat (2)         | Crossbeam (1)      | Umbrella (1)       | Point of No Return (2) | Stack Up (2)      |
+| 6  | Long Bed (2)     | Trapdoor (0)        | Wedge (1)          | Ice Sculpture (2)  | Déjà Vu (1)            | Constellation (1) |
+| 7  | Mind the Gap (1) | Double Lock (2)     | Jam (1)            | Pinball (2)        | Relay (2)              | Light the Way (2) |
+| 8  | Two Flights (2)  | Last Ghost (3)      | Catch the Bus (2)  | Cold Storage (2)   | Catch Yourself (1)     | Dark Matter (1)   |
+| 9  | Sawmill (0)      | No Footing (1)      | Two Birds (1)      | Black Ice (2)      | Afterimage (3)         | Far Light (2)     |
+| 10 | Last Step (2)    | Musical Chairs (3)  | Assembly Line (3)  | Avalanche (3)      | Last Light (4)         | Supernova (3)     |
 
 ## Game feel
 
@@ -130,12 +136,13 @@ brackets.
   into the ghost tint.
 - The respawn pops in with a quick scale-up.
 - The HUD ghost counter bounces when it changes.
-- On level complete: confetti, then the stars pop in one by one, each a little higher in pitch.
+- On level complete: the exit's doors swing open, confetti bursts out from behind them, the runner
+  hops in, then the stars pop in one by one, each a little higher in pitch.
 - A **Juice** toggle in settings switches all of it off, to compare the game with and without it.
 
 All of this lives in one script, and the toggle disables that script's effects and nothing else.
 
-## Phones, tablets and browsers
+## Phones, tablets, TVs and browsers
 
 The game is landscape on every device, and nothing in it assumes a 16:9 screen.
 
@@ -148,6 +155,11 @@ The game is landscape on every device, and nothing in it assumes a 16:9 screen.
   edges, and each settings row toggles from anywhere along it.
 - **60 frames a second.** Phones default to 30, which is too few for a timing game.
 - **Back pauses** the game, and a death gives a short vibration (Settings > Vibration turns it off).
+- **Android TV, gamepads and keyboards.** Every menu works with a D-pad, stick or arrow keys, with a
+  glowing ring on the selected button. On a TV the game is in the TV launcher and needs only the
+  remote, and the interface shrinks evenly to stay clear of edges a TV may crop.
+- **Themes and skins.** A Store screen swaps the look (Painted, Classic, Haunted Graveyard, or Retro
+  Pixel, a live pixel-art screen filter) and the runner's skin, separately.
 - **In a browser** the game fills the window at any size, with a fullscreen button, and asks a phone
   held upright to turn sideways.
 
@@ -321,7 +333,7 @@ rebuilds the art, audio, prefabs, levels and scenes, and others build the APK an
 
 ## What's next
 
-- The Google Play release, now in closed testing as Ghostep.
+- The Google Play release, now in closed testing as Ghostep, for phones and Android TV.
 - A 30-second playable ad cut from the same project.
 - Final art and audio in place of the generated placeholders.
 
